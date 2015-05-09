@@ -1,6 +1,24 @@
 
 WHAT the CODE DOES
 ------------------
+SAMPLE INPUT:
+
+    [{"text": "What is the average life-span of a house fly?",
+      "percent_correct": 0.8551724137931034},
+     {"text": "What is the capital of any state?",
+      "percent_correct": 0.71379310344827586},
+     {"text": "Where do fire ants live?",
+      "percent_correct": 0.6779661016949152},
+     {"text": "How old was the first president when he died?",
+      "percent_correct": 0.5016949152542372},
+     {"text": "What is the number one coffee roaster in North America?",
+      "percent_correct": 0.4932203389830508},
+     {"text": "Can penguins fly?",
+      "percent_correct": 0.3217391304347826},
+     {"text": "What is the capital of New York York York state?",
+      "percent_correct": 0.2101449275362319},
+     {"text": "Who composed the American National Anthem Anthem?",
+      "percent_correct": 0.1246376811594203}]
 
 ...
 
