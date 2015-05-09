@@ -3,6 +3,7 @@ from __future__ import print_function
 import re
 
 
+#TO DO: Import data from a file containing a JSON object
 new_data = [{"text": "What is the average life-span of a house fly?",
              "percent_correct": 0.8551724137931034},
             {"text": "What is the capital of any state?",
@@ -26,7 +27,8 @@ def count_words(words, percentile):
     Main Function: Counts how many times a value is being passed from a list
     object
     '''
-    # TO DO: Upated description
+    # TO DO: (1) Update description
+    #        (2) Write exceptions/errors/processing-messages to a log file(s)
     print(" ")
     print("These are the raw values passed in, after a clean-up:")
     print(words)
@@ -64,7 +66,7 @@ def get_clean_data(r):
     eliminate unwanted characters in this case ( ) { } - < > and empty spaces
     in-between words.  More characters can be added as needed.
     '''
-    # TO DO: Update description
+    # TO DO: Update function description
     clean_r = []
     for i in r:
         i = re.sub('[\(\)\{\}<>\-\?]', '', i)
@@ -77,6 +79,8 @@ def get_max_count(clean_words_count, percentile):
     Get all words with top-two highest number of occurances, as long as
     said words are not included in the 'exclusions' list
     '''
+    # TO DO: (1) Update description
+    #        (2) Write exceptions/errors/processing-messages to a log file(s)
     # Add/Delete to/from exclusions list at will
     exclusions = ["a", "an", "the", "and", "but", "or", "for", \
                   "nor", "etc", "on", "at", "to", "from", "by", \
@@ -93,7 +97,7 @@ def get_max_count(clean_words_count, percentile):
     # Will iterate through every value in the collection and aler if the value
     # associated with the key is not greater than 1 and will igonore any values
     # which are matched successfully against the values in the 'exclusions' list
-    # TODO: Modify the code so that it doesnt alert for every single value,
+    # TO DO: Modify the code so that it doesnt alert for every single value,
     #       which is not greater than one, instead it should alert once and show
     #       all values which were not in the 'exclusions' list but had a value
     #       of only 1 <<< this may be over-kill for larger data sets, but cool
@@ -125,9 +129,11 @@ def get_max_count(clean_words_count, percentile):
     print(" ")
     return top_count
 
-###
-#TODO: Add description here ...
-###
+# TO DO: (1) Add description here ...
+#        (2) Write exceptions/errors/processing-messages to a log file(s)
+#        (3) Write final results to a JSON object (dict)
+#        (4) Write final JSON object to file:
+#            "top-two-counts-per-precentile.json"
 above_fortynine = []
 below_fifty = []
 top_above_fortynine = {}
