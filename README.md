@@ -3,12 +3,14 @@ WHAT the CODE DOES
 ------------------
 
 ...
+
     These are the raw values passed in, after a clean-up:
     ['what is the average lifespan of a house fly', 'what is the capital of
     any state', 'where do fire ants live', 'how old was the first president
     when he died']
 
 ...
+
     These are the same values with associated counts per word:
     {'old': 1, 'do': 1, 'house': 1, 'is': 2, 'ants': 1, 'any': 1, 'what': 2,
     'when': 1, 'state': 1, 'how': 1, 'live': 1, 'capital': 1, 'was': 1,
@@ -16,23 +18,27 @@ WHAT the CODE DOES
     'average': 1, 'lifespan': 1, 'the': 3, 'where': 1, 'first': 1}
 
 ...
+
     Value found was NOT GREATER THAN 1!
     Value found was NOT GREATER THAN 1!
     Value found was NOT GREATER THAN 1!
 
 ...
+
     In the percentile:  ABOVE FORTY-NINE
     These are the words, not found in the exclusions list, which have the
     highest top-two counts:
     {}
 
 ...
+
     These are the raw values passed in, after a clean-up:
     ['what is the number one coffee roaster in north america',
     'can penguins fly', 'what is the capital of new york york york state',
     'who composed the american national anthem anthem']
 
 ...
+
     These are the same values with associated counts per word:
     {'composed': 1, 'roaster': 1, 'is': 2, 'number': 1, 'one': 1, 'in': 1,
     'what': 2, 'anthem': 2, 'state': 1, 'capital': 1, 'new': 1, 'national': 1,
@@ -40,17 +46,20 @@ WHAT the CODE DOES
     'of': 1, 'american': 1, 'penguins': 1, 'can': 1, 'the': 3}
 
 ...
+
     In the percentile:  BELOW FIFTY
     These are the words, not found in the exclusions list, which have the
     highest top-two counts:
     {'anthem': 2, 'york': 3}
 
 ...
+
     All The words with the highest count in the ABOVE FORTY-NINE percentile were
     in the exclusions list. All other values appear exactly once.  There is
     nothing to return.
 
 ...
+
     The words with the highest count in the BELOW FIFTY percentile are:
     {'anthem': 2, 'york': 3}
 
