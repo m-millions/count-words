@@ -72,7 +72,7 @@ def count_words(words):
               key=(lambda key: clean_words_count[key])))
     if clean_words_count[ii] > 1:
         #print(ii, clean_words_count[ii])
-        top_count[clean_words_count[ii]] = ii
+        top_count[ii] = clean_words_count[ii]
         print(top_count)
         del clean_words_count[ii]
         print(clean_words_count)
@@ -81,7 +81,7 @@ def count_words(words):
               key=(lambda key: clean_words_count[key])))
         if clean_words_count[ii] > 1:
             #print(ii, clean_words_count[ii])
-            top_count[clean_words_count[ii]] = ii
+            top_count[ii] = clean_words_count[ii]
             print(top_count)
             del clean_words_count[ii]
             print(clean_words_count)
