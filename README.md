@@ -1,7 +1,7 @@
 
 WHAT the CODE DOES
 ------------------
-SAMPLE INPUT:
+SAMPLE IN-PUT:
 
     [{"text": "What is the average life-span of a house fly?",
       "percent_correct": 0.8551724137931034},
@@ -20,7 +20,7 @@ SAMPLE INPUT:
      {"text": "Who composed the American National Anthem Anthem?",
       "percent_correct": 0.1246376811594203}]
 
-...
+STANDARD PROCESSING:
 
     These are the raw values passed in, after a clean-up:
     ['what is the average lifespan of a house fly', 'what is the capital of
@@ -70,7 +70,7 @@ SAMPLE INPUT:
     highest top-two counts:
     {'anthem': 2, 'york': 3}
 
-...
+SAMPLE OUT-PUT:
 
     All The words with the highest count in the ABOVE FORTY-NINE percentile were
     in the exclusions list. All other values appear exactly once.  There is
