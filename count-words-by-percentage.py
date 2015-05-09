@@ -67,7 +67,8 @@ def count_words(words):
     print(clean_words_count) # delete at will
     # pull MAX but make sure it is greater than 1
     # TODO: Turn this into a function that can run x times
-    # as long as clean_words_count[ii] > 1
+    # as long as clean_words_count[ii] > 1 and ignore all
+    # values in the "exclusions" list
     ii = (max(clean_words_count.iterkeys(), \
               key=(lambda key: clean_words_count[key])))
     if clean_words_count[ii] > 1:
@@ -111,5 +112,8 @@ clean_below_fifty = get_clean_data(below_fifty)
 
 top_above_fortynine = count_words(clean_above_fortynine)
 top_below_fifty = count_words(clean_below_fifty)
-print(top_above_fortynine, top_below_fifty)
+print("The words with the highest count in the ABOVE FORTININE percentile are: ",\
+       top_above_fortynine)
+print("The words with the highest count in the BELOW FIFTY percentile are:", \
+       top_below_fifty)
 
