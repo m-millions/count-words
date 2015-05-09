@@ -38,6 +38,8 @@ def count_words(words):
     Counts how many times a value is being passed from a list object
     '''
     print(words)
+    exclusions = ["a", "an", "the", "and", "but", "or", "for", "nor", "etc", \
+               "on", "at", "to", "from", "by"]
     # Used to keep a unique list of all the values passed via new_data
     clean_words = []
     # keeps a dict of all the values passed via new_data and the
