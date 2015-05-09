@@ -46,6 +46,7 @@ def count_words(words):
     # number of times each value has been seen throughout the iterations
     clean_words_count = {}
     # Process data for values associated with a score above 49 precentile
+    top_count = {}
     for i in words:
         #print(i) # delete at will
         i = i.split()
@@ -69,6 +70,8 @@ def count_words(words):
               key=(lambda key: clean_words_count[key])))
     if clean_words_count[ii] > 1:
         print(ii, clean_words_count[ii])
+        top_count[clean_words_count[ii]] = ii
+        print(top_count)
         del clean_words_count[ii]
         print(clean_words_count)
         # pull MAX but make sure it is greater than 1
@@ -82,6 +85,7 @@ def count_words(words):
             print("Value found was NOT GREATER THAN 1!")
     else:
         print("Value found was NOT GREATER THAN 1!")
+    return top_count  #TODO: SET VALUE TO RETURN
 
 
 above_fortynine = []
@@ -103,3 +107,5 @@ clean_below_fifty = get_clean_data(below_fifty)
 
 top_above_fortynine = count_words(clean_above_fortynine)
 top_below_fifty = count_words(clean_below_fifty)
+print(top_above_fortynine, top_below_fifty)
+
