@@ -85,7 +85,7 @@ def count_words(words):
             print("Value found was NOT GREATER THAN 1!")
     else:
         print("Value found was NOT GREATER THAN 1!")
-    return top_count  #TODO: SET VALUE TO RETURN
+    return top_count
 
 
 above_fortynine = []
