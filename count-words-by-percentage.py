@@ -65,6 +65,7 @@ def count_words(clean_above_fortynine, clean_below_fifty):
                 #print(above_fortynine_count) # delete at will
     print("Word Count Above FORTY NINE %: ")
     print(above_fortynine_count)
+    print(max(above_fortynine_count.iterkeys(), key=(lambda key: above_fortynine_count[key])))
 
     # Process data for values associated with a score below 50 precentile
     for i in clean_below_fifty:
@@ -88,6 +89,7 @@ def count_words(clean_above_fortynine, clean_below_fifty):
                 #print(below_fifty_count)
     print("Word Count Below FIFTY %: ")
     print(below_fifty_count)
+    print(max(below_fifty_count.iterkeys(), key=(lambda key: below_fifty_count[key])))
 
 
 above_fortynine = []
