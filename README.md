@@ -1,6 +1,7 @@
 
 WHAT the CODE DOES
 ------------------
+FIRST MAJOR VERSION as of 05/09/2015
 SAMPLE IN-PUT:
 
     [{"text": "What is the average life-span of a house fly?",
