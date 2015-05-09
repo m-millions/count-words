@@ -35,7 +35,7 @@ def get_clean_data(r):
         clean_r.append(i.lower())
     return clean_r
 
-def get_max_count(clean_words_count):
+def get_max_count(clean_words_count, percentile):
     '''
     Get all words with top-two highest number of occurances, as long as
     said words are not included in the 'exclusions' list
@@ -81,13 +81,14 @@ def get_max_count(clean_words_count):
             else:
                 print("Value found was NOT GREATER THAN 1!")
     print(" ")
+    print("In the percentile: ", percentile)
     print("These are the words, not found in the exclusions list, which have " +
           "the highest top-two counts:")
     print(top_count)
     print(" ")
     return top_count
 
-def count_words(words):
+def count_words(words, percentile):
     '''
     Counts how many times a value is being passed from a list object
     '''
@@ -120,7 +121,7 @@ def count_words(words):
     print("These are the same values with associated counts per word:")
     print(clean_words_count) # delete at will
     print(" ")
-    top_count = get_max_count(clean_words_count)
+    top_count = get_max_count(clean_words_count, percentile)
     return top_count
 
 ###
@@ -145,8 +146,12 @@ clean_above_fortynine = get_clean_data(above_fortynine)
 clean_below_fifty = get_clean_data(below_fifty)
 
 # Get all words with top-two counts
-top_above_fortynine = count_words(clean_above_fortynine)
-top_below_fifty = count_words(clean_below_fifty)
+# Pass in "percentile" just for clarity not needed for logic execution
+percentile = "ABOVE FORTY-NINE"
+top_above_fortynine = count_words(clean_above_fortynine, percentile)
+# Pass in "percentile" just for clarity not needed for logic execution
+percentile = "BELOW FIFTY"
+top_below_fifty = count_words(clean_below_fifty, percentile)
 
 # Pring what was found, even if there were no legitimate counts
 if bool(top_above_fortynine) == True:
