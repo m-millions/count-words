@@ -27,6 +27,7 @@ def get_clean_data(r):
     eliminate unwanted characters in this case ( ) { } - < > and empty spaces
     in-between words.  More characters can be added as needed.
     '''
+    # TO DO: Update description
     clean_r = []
     for i in r:
         i = re.sub('[\(\)\{\}<>\-\?]', '', i)
@@ -36,7 +37,7 @@ def get_clean_data(r):
 
 def get_max_count(clean_words_count):
     '''
-    Get top-two random words with the highest number of occurances, as long as
+    Get all words with top-two highest number of occurances, as long as
     said words are not included in the 'exclusions' list
     '''
     # Add/Delete to/from exclusions list at will
@@ -79,7 +80,8 @@ def get_max_count(clean_words_count):
                     del clean_words_count_copy[ii]
             else:
                 print("Value found was NOT GREATER THAN 1!")
-    print("These are the words with the highest top two counts:")
+    print("These are the words, not found in the exclusions list, which have \
+           the highest top-two counts:")
     print(top_count)
     print(" ")
     return top_count
@@ -88,6 +90,7 @@ def count_words(words):
     '''
     Counts how many times a value is being passed from a list object
     '''
+    # TO DO: Upated description
     print("These are the raw values passed in, after a clean-up:")
     print(words)
     print(" ")
