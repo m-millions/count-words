@@ -53,6 +53,8 @@ First major version:
     The last commit for the first major version of the script is associated with
     the following SHA-1 hash value: 536eef87b3955605ea62ed6a0057682d209a52a8
 
+    The commit's description is: "Updated descriptions and TO Dos."
+
 
 
 
