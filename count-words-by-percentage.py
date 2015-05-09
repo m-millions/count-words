@@ -38,8 +38,8 @@ def count_words(words):
     Counts how many times a value is being passed from a list object
     '''
     print(words)
-    exclusions = ["a", "an", "the", "and", "but", "or", "for", "nor", "etc", \
-               "on", "at", "to", "from", "by"]
+    exclusions = ["a", "an", "the", "and", "but", "or", "for", \
+                  "nor", "etc", "on", "at", "to", "from", "by"]
     # Used to keep a unique list of all the values passed via new_data
     clean_words = []
     # keeps a dict of all the values passed via new_data and the
@@ -66,10 +66,12 @@ def count_words(words):
                 clean_words_count[s] = 1
     print(clean_words_count) # delete at will
     # pull MAX but make sure it is greater than 1
+    # TODO: Turn this into a function that can run x times
+    # as long as clean_words_count[ii] > 1
     ii = (max(clean_words_count.iterkeys(), \
               key=(lambda key: clean_words_count[key])))
     if clean_words_count[ii] > 1:
-        print(ii, clean_words_count[ii])
+        #print(ii, clean_words_count[ii])
         top_count[clean_words_count[ii]] = ii
         print(top_count)
         del clean_words_count[ii]
@@ -78,7 +80,9 @@ def count_words(words):
         ii = (max(clean_words_count.iterkeys(), \
               key=(lambda key: clean_words_count[key])))
         if clean_words_count[ii] > 1:
-            print(ii, clean_words_count[ii])
+            #print(ii, clean_words_count[ii])
+            top_count[clean_words_count[ii]] = ii
+            print(top_count)
             del clean_words_count[ii]
             print(clean_words_count)
         else:
