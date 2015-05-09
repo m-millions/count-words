@@ -21,7 +21,7 @@ new_data = [{"text": "What is the average life-span of a house fly?",
             {"text": "Who composed the American National Anthem Anthem?",
              "percent_correct": 0.1246376811594203}]
 
-
+#def count_words(words, percentile): #set-up for final version
 def count_words(words, percentile):
     '''
     Main Function: Counts how many times a value is being passed from a list
@@ -50,8 +50,8 @@ def count_words(words, percentile):
                 # delete at will
                 #print(s + " is already in here; up-ing the count!")
             else:
-                # If this is the first time seeing the value, add it to the dict,
-                # and initate its count to 1
+                # If this is the first time seeing the value, add it to the
+                # dict, and initate its count to 1
                 clean_words.append(s)
                 clean_words_count[s] = 1
     print("These are the same values with associated counts per word:")
@@ -62,8 +62,8 @@ def count_words(words, percentile):
 
 def get_clean_data(r):
     '''
-    Processes data to clean up leading and trailing spaces and applies a regex to
-    eliminate unwanted characters in this case ( ) { } - < > and empty spaces
+    Processes data to clean up leading and trailing spaces and applies a regex
+    to eliminate unwanted characters in this case ( ) { } - < > and empty spaces
     in-between words.  More characters can be added as needed.
     '''
     # TO DO: Update function description
@@ -74,6 +74,7 @@ def get_clean_data(r):
         clean_r.append(i.lower())
     return clean_r
 
+#def get_max_count(clean_words_count): #set-up for final version
 def get_max_count(clean_words_count, percentile):
     '''
     Get all words with top-two highest number of occurances, as long as
@@ -154,10 +155,10 @@ clean_below_fifty = get_clean_data(below_fifty)
 
 # Get all words with top-two counts
 # Pass in "percentile" just for clarity not needed for logic execution
-percentile = "ABOVE FORTY-NINE"
+percentile = "ABOVE FORTY-NINE" #remove in final version
 top_above_fortynine = count_words(clean_above_fortynine, percentile)
 # Pass in "percentile" just for clarity not needed for logic execution
-percentile = "BELOW FIFTY"
+percentile = "BELOW FIFTY" #remove in final version
 top_below_fifty = count_words(clean_below_fifty, percentile)
 
 # Pring what was found, even if there were no legitimate counts
