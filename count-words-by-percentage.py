@@ -82,10 +82,10 @@ def count_words(words):
         print("Value found was NOT GREATER THAN 1!")
 
 
-top_above_fortynine = {}
-top_below_fifty = {}
 above_fortynine = []
 below_fifty = []
+top_above_fortynine = {}
+top_below_fifty = {}
 # Show us what's in the data-set - delete at will
 #print(new_data)
 for i in new_data:
