@@ -80,8 +80,9 @@ def get_max_count(clean_words_count):
                     del clean_words_count_copy[ii]
             else:
                 print("Value found was NOT GREATER THAN 1!")
-    print("These are the words, not found in the exclusions list, which have \
-           the highest top-two counts:")
+    print(" ")
+    print("These are the words, not found in the exclusions list, which have " +
+          "the highest top-two counts:")
     print(top_count)
     print(" ")
     return top_count
@@ -91,6 +92,7 @@ def count_words(words):
     Counts how many times a value is being passed from a list object
     '''
     # TO DO: Upated description
+    print(" ")
     print("These are the raw values passed in, after a clean-up:")
     print(words)
     print(" ")
@@ -128,7 +130,7 @@ above_fortynine = []
 below_fifty = []
 top_above_fortynine = {}
 top_below_fifty = {}
-# Show us what's in the data-set - delete at will
+# Show us what's in the new data-set - delete at will
 #print(new_data)
 for i in new_data:
     # If the values has already been processed once, up the count by 1
@@ -138,23 +140,32 @@ for i in new_data:
         below_fifty.append(i["text"])
 #print(above_fortynine)
 #print(below_fifty)
+# Clean-up data of undesired characters
 clean_above_fortynine = get_clean_data(above_fortynine)
 clean_below_fifty = get_clean_data(below_fifty)
 
+# Get all words with top-two counts
 top_above_fortynine = count_words(clean_above_fortynine)
 top_below_fifty = count_words(clean_below_fifty)
+
+# Pring what was found, even if there were no legitimate counts
 if bool(top_above_fortynine) == True:
-    print("The words with the highest count in the ABOVE FORTY-NINE percentile \
-           are: ", top_above_fortynine)
+    print("The words with the highest count in the ABOVE FORTY-NINE " +
+          "percentile are: ", top_above_fortynine)
+    print(" ")
 else:
-    print("All The words with the highest count in the BELOW FIFTY \
-           percentile were in the exclusions list. All other values appear \
-           exactly once.  There is nothing to return.")
+    print("All The words with the highest count in the ABOVE FORTY-NINE " +
+          "percentile were in the exclusions list. All other values appear " +
+          "exactly once.  There is nothing to return.")
+    print(" ")
 
 if bool(top_below_fifty) == True:
-    print("The words with the highest count in the BELOW FIFTY percentile \
-           are:", top_below_fifty)
+    print("The words with the highest count in the BELOW FIFTY percentile " +
+          "are: ", top_below_fifty)
+    print(" ")
 else:
-    print("All The words with the highest count in the BELOW FIFTY \
-           percentile were in the exclusions list. All other values appear \
-           exactly once.  There is nothing to return.")
+    print("All The words with the highest count in the BELOW FIFTY " +
+          "percentile were in the exclusions list. All other values appear " +
+          "exactly once.  There is nothing to return.")
+    print(" ")
+
