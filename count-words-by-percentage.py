@@ -21,6 +21,43 @@ new_data = [{"text": "What is the average life-span of a house fly?",
              "percent_correct": 0.1246376811594203}]
 
 
+def count_words(words, percentile):
+    '''
+    Main Function: Counts how many times a value is being passed from a list
+    object
+    '''
+    # TO DO: Upated description
+    print(" ")
+    print("These are the raw values passed in, after a clean-up:")
+    print(words)
+    print(" ")
+    # Used to keep a unique list of all the values passed via new_data
+    clean_words = []
+    # keeps a dict of all the values passed via new_data and the
+    # number of times each value has been seen throughout the iterations
+    clean_words_count = {}
+    for i in words:
+        #print(i) # delete at will
+        i = i.split()
+        #print(i)
+        # If the values has already been processed once, up the count by 1
+        for s in i:
+            #print(s)
+            if s in clean_words:
+                clean_words_count[s] = clean_words_count[s] + 1
+                # delete at will
+                #print(s + " is already in here; up-ing the count!")
+            else:
+                # If this is the first time seeing the value, add it to the dict,
+                # and initate its count to 1
+                clean_words.append(s)
+                clean_words_count[s] = 1
+    print("These are the same values with associated counts per word:")
+    print(clean_words_count) # delete at will
+    print(" ")
+    top_count = get_max_count(clean_words_count, percentile)
+    return top_count
+
 def get_clean_data(r):
     '''
     Processes data to clean up leading and trailing spaces and applies a regex to
@@ -86,42 +123,6 @@ def get_max_count(clean_words_count, percentile):
           "the highest top-two counts:")
     print(top_count)
     print(" ")
-    return top_count
-
-def count_words(words, percentile):
-    '''
-    Counts how many times a value is being passed from a list object
-    '''
-    # TO DO: Upated description
-    print(" ")
-    print("These are the raw values passed in, after a clean-up:")
-    print(words)
-    print(" ")
-    # Used to keep a unique list of all the values passed via new_data
-    clean_words = []
-    # keeps a dict of all the values passed via new_data and the
-    # number of times each value has been seen throughout the iterations
-    clean_words_count = {}
-    for i in words:
-        #print(i) # delete at will
-        i = i.split()
-        #print(i)
-        # If the values has already been processed once, up the count by 1
-        for s in i:
-            #print(s)
-            if s in clean_words:
-                clean_words_count[s] = clean_words_count[s] + 1
-                # delete at will
-                #print(s + " is already in here; up-ing the count!")
-            else:
-                # If this is the first time seeing the value, add it to the dict,
-                # and initate its count to 1
-                clean_words.append(s)
-                clean_words_count[s] = 1
-    print("These are the same values with associated counts per word:")
-    print(clean_words_count) # delete at will
-    print(" ")
-    top_count = get_max_count(clean_words_count, percentile)
     return top_count
 
 ###
