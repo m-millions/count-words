@@ -2,6 +2,7 @@
 WHAT the CODE DOES
 ------------------
 FIRST MAJOR VERSION as of 05/09/2015
+
 SAMPLE IN-PUT:
 
     [{"text": "What is the average life-span of a house fly?",
@@ -134,8 +135,6 @@ First major version:
     the following SHA-1 hash value: 536eef87b3955605ea62ed6a0057682d209a52a8
 
     The commit's description is: "Updated descriptions and TO Dos."
-
-
 
 
 AUTHOR(S)
