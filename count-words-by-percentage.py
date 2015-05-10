@@ -165,9 +165,8 @@ def get_max_count(clean_words_count, percentile):
     the 'exclusions' list.
     '''
     # TODO: (1) Write exceptions/errors/processing-messages to a log file(s)
-    exclusions = ["a", "an", "the", "and", "but", "or", "for", \
-                  "nor", "etc", "on", "at", "to", "from", "by", \
-                  "is", "what", "of"]
+    exclusions = ["a", "an", "the", "and", "but", "or", "for", "nor", "etc", \
+                  "on", "at", "to", "from", "by", "is", "what", "of"]
     top_count = {}
     # Used to mutate dict outside of the iteration
     clean_words_count_copy = {}
