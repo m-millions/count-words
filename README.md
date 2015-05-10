@@ -100,6 +100,12 @@ RUN
 
 KNOWN BUGS
 ----------
+There are no none bugs to report, as of this version.
+
+
+TROUBLESHOOT
+------------
+Console-level messaging for the script.
 
 
 TESTING METHODOLOGY
@@ -113,11 +119,6 @@ WAYS TO IMPROVE ON THIS CODE
 COPYRIGHT and LICENSING
 -----------------------
 Use and extend at will - credit the author.
-
-
-TROUBLESHOOTING
----------------
-Console-level messaging for the app.
 
 
 CREDITS and ACKNOWLEDGEMENTS
