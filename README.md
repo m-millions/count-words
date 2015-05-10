@@ -147,6 +147,7 @@ TEST
 
 RECOMMENDATIONS
 ---------------
+(1) Add time/date stamp to log file
 
 
 COPYRIGHT and LICENSING
