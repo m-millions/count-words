@@ -163,6 +163,14 @@ def get_new_data(input_file):
     above_fortynine = []
     below_fifty = []
     file_path = './' + input_file
+    #"none_repeatable" - holds every question number were no significant
+    #                    repeatabe words were found
+    #"above_fortynine" - holds a dict of the top-two repeated words in this
+    #                    precentile and the total number of occurances - returns
+    #                    empty if no significant repetitions were found
+    #"below_fifty"     - holds a dict of the top-two repeated words in this
+    #                    precentile and the total number of occurances - returns
+    #                    empty if no significant repetitions were found
     final_word_count = {"none_repeatable":'',
                         "above_fortynine":'',
                         "below_fifty":''}
