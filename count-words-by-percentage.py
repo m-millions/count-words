@@ -141,6 +141,9 @@ def get_max_count(clean_words_count, percentile):
                 else:
                     del clean_words_count_copy[ii]
             else:
+                #TO DO: Populate "none_repeatable" with "question_num" value
+                #       for items where no significant repeatable values were
+                #       found
                 print("Value found was NOT GREATER THAN 1!")
     print(" ")
     print("In the percentile: ", percentile)
@@ -160,6 +163,9 @@ def get_new_data(input_file):
     above_fortynine = []
     below_fifty = []
     file_path = './' + input_file
+    final_word_count = {"none_repeatable":'',
+                        "above_fortynine":'',
+                        "below_fifty":''}
     top_above_fortynine = {}
     top_below_fifty = {}
 
