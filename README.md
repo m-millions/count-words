@@ -117,22 +117,22 @@ RESULTING JSON to FILE:
     }
 
 
-CONFIGURATION
--------------
+CONFIGURE
+---------
 
 
-INSTALLATION
-------------
+INSTALL
+-------
 Clone or dowload the project to your environment and install all project
 dependencies, as detailed above.
 
 
-RUNNING
--------
+RUN
+---
 
 
-KNOWN BUGS
-----------
+BUGS
+----
 There are no none bugs to report, as of this version.
 
 
@@ -141,7 +141,7 @@ TROUBLESHOOT
 Console-level messaging for the script.
 
 
-TESTING
+TEST
 -----
 
 
