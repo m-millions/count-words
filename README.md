@@ -102,18 +102,18 @@ SAMPLE OUT-PUT:
     }
 
 
-CONFIGURE
----------
+CONFIGURATION
+-------------
 
 
-INSTALL
--------
+INSTALLATION
+------------
 Clone or dowload the project to your environment and install all project
 dependencies, as detailed above.
 
 
-RUN
----
+RUNNING
+-------
 
 
 KNOWN BUGS
@@ -126,12 +126,12 @@ TROUBLESHOOT
 Console-level messaging for the script.
 
 
-TESTING METHODOLOGY
--------------------
+TESTING
+-----
 
 
-WAYS TO IMPROVE ON THIS CODE
-----------------------------
+RECOMMENDATIONS
+---------------
 
 
 COPYRIGHT and LICENSING
