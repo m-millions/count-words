@@ -1,8 +1,8 @@
 #coding: UTF-8
 from __future__ import print_function
 
-#import getopt
-#import io
+import getopt
+import io
 import json
 import os.path
 import re
@@ -42,6 +42,7 @@ def count_words(words, percentile):
     '''
     # TO DO: (1) Update description
     #        (2) Write exceptions/errors/processing-messages to a log file(s)
+    print("888*******************  NEW RUN STARTS HERE *******************888")
     print(" ")
     print("These are the raw values passed in, after a clean-up:")
     print(words)
@@ -145,6 +146,7 @@ def get_new_data(input_file):
             top_below_fifty = count_words(clean_below_fifty, percentile)
             # Print what was found, even if there were no legitimate counts
             if bool(top_above_fortynine) == True:
+                final_word_count['above_fortynine'] = top_above_fortynine
                 print("The words with the highest count in the ABOVE FORTY-NINE " +
                       "percentile are: ", top_above_fortynine)
                 print(" ")
@@ -153,8 +155,8 @@ def get_new_data(input_file):
                       "percentile were in the exclusions list. All other values appear " +
                       "exactly once.  There is nothing to return.")
                 print(" ")
-
             if bool(top_below_fifty) == True:
+                final_word_count['below_fifty'] = top_below_fifty
                 print("The words with the highest count in the BELOW FIFTY percentile " +
                       "are: ", top_below_fifty)
                 print(" ")
@@ -163,6 +165,8 @@ def get_new_data(input_file):
                       "percentile were in the exclusions list. All other values appear " +
                       "exactly once.  There is nothing to return.")
                 print(" ")
+        print(final_word_count)
+        print("888******************* THE END IS HERE *******************888")
 
 #def get_max_count(clean_words_count): #set-up for final version
 def get_max_count(clean_words_count, percentile):
@@ -239,10 +243,12 @@ def main():
     #output_file='top-two-counts-per-precentile.json"'
 
     #try:
-    #     myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
+        #myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
+    #    myopts, args = getopt.getopt(sys.argv[0:],"i:")
     #except getopt.GetoptError as e:
     #    print(str(e))
     #    print("Usage: %s -i input -o output" % sys.argv[0])
+    #    print("Usage: %s -i input" % sys.argv[0])
     #    sys.exit(2)
 
     #for o, a in myopts:
@@ -251,7 +257,8 @@ def main():
     #    elif o == '-o':
     #        output_file=a
     # Uncomment to see value of args passed at the command line
-    # print ("Input file : %s and output file: %s" % (input_file, output_file))
+    #print ("Input file : %s and output file: %s" % (input_file, output_file))
+    #print ("Input file : %s" % (input_file))
 
     #get_new_data(input_file, output_file)
     get_new_data(input_file)
