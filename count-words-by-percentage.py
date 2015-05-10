@@ -207,6 +207,10 @@ TODO: Exception Handling for args is incomplete
        or all args are missing
 '''
 def main():
+    '''
+    '''
+    # TODO: (1) Add description...
+    #       (2) Activate code to allow parameters from the command line
     input_file='questions.json'
     output_file='top-two-counts-per-precentile.json'
 
@@ -227,7 +231,6 @@ def main():
     # Uncomment to see value of args passed at the command line
     #print ("Input file : %s and output file: %s" % (input_file, output_file))
     #print ("Input file : %s" % (input_file))
-
     get_new_data(input_file, output_file)
 
 if __name__ == '__main__':
