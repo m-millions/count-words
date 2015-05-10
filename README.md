@@ -1,7 +1,8 @@
 
 WHAT the CODE DOES
 ------------------
-FIRST MAJOR VERSION as of 05/09/2015
+SECOND MAJOR VERSION as of 05/10/2015
+
 
 SAMPLE IN-PUT:
 
@@ -42,10 +43,9 @@ STANDARD PROCESSING:
 ...
 
     In the percentile:  ABOVE FORTY-NINE-NINE-NINE
-    These are the words, not found in the exclusions list, which have the highest top-two counts:
-    {'can': 4, 'best': 4}
+    These are the words, not found in the exclusions list, which have the highest top-two counts:  {'can': 4, 'best': 4}
 
-- AND -
+AND
 
     In the percentile:  BELOW FIFTY
     No SIGNIFICANT repeatable words were found:
