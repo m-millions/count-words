@@ -1,25 +1,45 @@
+ # coding: utf-8
 from __future__ import print_function
 
 import re
 
 
 #TO DO: Import data from a file containing a JSON object
-new_data = [{"text": "What is the average life-span of a house fly?",
-             "percent_correct": 0.8551724137931034},
-            {"text": "What is the capital of any state?",
-             "percent_correct": 0.71379310344827586},
-            {"text": "Where do fire ants live?",
-             "percent_correct": 0.6779661016949152},
-            {"text": "How old was the first president when he died?",
-             "percent_correct": 0.5016949152542372},
-            {"text": "What is the number one coffee roaster in North America?",
-             "percent_correct": 0.4932203389830508},
-            {"text": "Can penguins fly?",
-             "percent_correct": 0.3217391304347826},
-            {"text": "What is the capital of New York York York state?",
-             "percent_correct": 0.2101449275362319},
-            {"text": "Who composed the American National Anthem Anthem?",
-             "percent_correct": 0.1246376811594203}]
+new_data = [
+    {"text": "Which statement BEST supports the president's goal for the \
+      minimum wage?",
+     "percent_correct": 0.6551724137931034},
+    {"text": "YUP",
+     "percent_correct": 0.5689655172413793},
+    {"text": "What can we conclude Obama hoped to gain by inviting Gabby \
+      Giffords to his State of the Union address?",
+     "percent_correct": 0.6551724137931034},
+    {"text": "Read this sentence from the passage.    <blockquote>\"Every \
+      dollar \
+      we invest in high-quality early education can save more than             \
+      seven dollars later on –                                                 \
+      boosting graduation rates, reducing teen pregnancy,                      \
+      reducing violent crime.\"</blockquote>                                   \
+      What can we conclude is the BEST reason the president makes this claim? ",
+     "percent_correct": 0.5862068965517241},
+    {"text": "Which of the following claims made by President Obama in his \
+      speech BEST supports the argument that raising the minimum wage will \
+      benefit businesses and boost the economy?",
+     "percent_correct": 0.41379310344827586},
+    {"text": "OK",
+     "percent_correct": 0.8135593220338984},
+    {"text": "MAYBE",
+     "percent_correct": 0.8220338983050848},
+    {"text": "What can we infer is the BEST reason why American companies are \
+      choosing to have their products made overseas rather than in the \
+      United States?",
+     "percent_correct": 0.6779661016949152},
+    {"text": "How will bringing companies back to the United States \
+      restore the middle class?",
+     "percent_correct": 0.6016949152542372},
+    {"text": "Which of the following BEST describes why raising the \
+      minimum wage may harm small businesses?",
+     "percent_correct": 0.5932203389830508}]
 
 #def count_words(words, percentile): #set-up for final version
 def count_words(words, percentile):
@@ -69,7 +89,9 @@ def get_clean_data(r):
     # TO DO: Update function description
     clean_r = []
     for i in r:
-        i = re.sub('[\(\)\{\}<>\-\?]', '', i)
+        i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?\<\>/.,\\n\\r\\t\\xe2\\x80\\x93]', \
+                     '', i)
+        i = re.sub('blockquote', '', i)
         i = i.strip()
         clean_r.append(i.lower())
     return clean_r
