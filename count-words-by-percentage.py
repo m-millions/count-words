@@ -1,4 +1,4 @@
-# coding: utf-8
+#coding: UTF-8
 from __future__ import print_function
 
 #import csv
@@ -80,12 +80,17 @@ def get_clean_data(r):
     to eliminate unwanted characters in this case ( ) { } - < > and empty spaces
     in-between words.  More characters can be added as needed.
     '''
-    # TO DO: Update function description
+    # TO DO: (1) Update function description
+    #        (2) Optimize this function - where possible
     clean_r = []
     for i in r:
-        i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?\<\>/.,;\\n\\r\\t\\xe2\\x80\\x93]', \
+        i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?/.,;\\n\\r\\t\\xe2\\x80\\x93]', \
                      '', i)
-        i = i.strip()
+        i = re.sub('blockquote', '', i) #romove 'blockquote'
+        i = i.replace(u"\u2013", '') #remove EN DASH
+        i = i.replace(u"\u2022", '') #remove BULLET
+        i = i.strip()  #strip leading and trailing spaces
+        i = str(i)   #convert from unicode to Python string
         clean_r.append(i.lower())
     return clean_r
 
@@ -171,8 +176,10 @@ def get_new_data(input_file):
             # If the values has already been processed once, up the count by 1
             if i["percent_correct"] > 0.499:
                 above_fortynine.append(i["text"])
+                #above_fortynine.append(str(i["text"]))
             elif i["percent_correct"] < 0.500:
                 below_fifty.append(i["text"])
+                #below_fifty.append(str(i["text"]))
             #print(above_fortynine)
             #print(below_fifty)
             # Clean-up data of undesired characters
