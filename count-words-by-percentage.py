@@ -91,7 +91,6 @@ def get_clean_data(r):
     for i in r:
         i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?\<\>/.,\\n\\r\\t\\xe2\\x80\\x93]', \
                      '', i)
-        i = re.sub('blockquote', '', i)
         i = i.strip()
         clean_r.append(i.lower())
     return clean_r
