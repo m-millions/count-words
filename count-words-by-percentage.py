@@ -1,14 +1,17 @@
 # coding: utf-8
 from __future__ import print_function
 
+#import csv
+#import getopt
+#import io
+import json
+import os.path
 import re
+import sys
 
-
-#TO DO: Import data from a file containing a JSON object
+'''
+SAMPLE DATA-SET:
 new_data = [
-    {"text": "Which statement BEST supports the president's goal for    eating \
-      ice cream in the winter?",
-     "percent_correct": 0.6551724137931034},
     {"text": "YUP-YUP--YUP YUP-YUP--YUP YUP-YUP--YUP",
      "percent_correct": 0.3889655172413793},
     {"text": "What can we conclude the • president hoped to gain by inviting   \
@@ -25,20 +28,11 @@ new_data = [
       speech BEST supports the argument that this change                  will \
       benefit businesses and boost the economy?",
      "percent_correct": 0.41379310344827586},
-    {"text": "In the section \"What's the Fuss?\" What is going on here?",
-     "percent_correct": 0.8135593220338984},
-    {"text": "MAYBE",
-     "percent_correct": 0.8220338983050848},
-    {"text": "What can we infer is the BEST reason why companies are           \
-      choosing to have their products made overseas rather than                \
-      at home?",
-     "percent_correct": 0.6779661016949152},
-    {"text": "How will bringing companies back home restore the economy?",
-     "percent_correct": 0.6016949152542372},
-    {"text": "Which of the following BEST describes why raising the ceiling on \
-      the new house is a good thing?",
-     "percent_correct": 0.5932203389830508}]
-
+    {"text": "In the section \"What's the Fuss?\" What is GOING on here?",
+     "percent_correct": 0.8135593220338984}
+]
+'''
+#TO DO: Import data from a file containing a JSON object
 #def count_words(words, percentile): #set-up for final version
 def count_words(words, percentile):
     '''
@@ -149,55 +143,99 @@ def get_max_count(clean_words_count, percentile):
     print(" ")
     return top_count
 
-# TO DO: (1) Add description here ...
-#        (2) Write exceptions/errors/processing-messages to a log file(s)
-#        (3) Write final results to a JSON object (dict)
-#        (4) Write final JSON object to file:
-#            "top-two-counts-per-precentile.json"
-above_fortynine = []
-below_fifty = []
-top_above_fortynine = {}
-top_below_fifty = {}
-# Show us what's in the new data-set - delete at will
-#print(new_data)
-for i in new_data:
-    # If the values has already been processed once, up the count by 1
-    if i["percent_correct"] > 0.499:
-        above_fortynine.append(i["text"])
-    elif i["percent_correct"] < 0.500:
-        below_fifty.append(i["text"])
-#print(above_fortynine)
-#print(below_fifty)
-# Clean-up data of undesired characters
-clean_above_fortynine = get_clean_data(above_fortynine)
-clean_below_fifty = get_clean_data(below_fifty)
+#def get_new_data(input_file, output_file):
+def get_new_data(input_file):
+     # TO DO: (1) Add description here ...
+     #        (2) Write exceptions/errors/processing-messages to a log file(s)
+     #        (3) Write final results to a JSON object (dict)
+     #        (4) Write final JSON object to file:
+     #            "top-two-counts-per-precentile.json"
+    above_fortynine = []
+    below_fifty = []
+    file_path = './' + input_file
+    top_above_fortynine = {}
+    top_below_fifty = {}
 
-# Get all words with top-two counts
-# Pass in "percentile" just for clarity not needed for logic execution
-percentile = "ABOVE FORTY-NINE" #remove in final version
-top_above_fortynine = count_words(clean_above_fortynine, percentile)
-# Pass in "percentile" just for clarity not needed for logic execution
-percentile = "BELOW FIFTY" #remove in final version
-top_below_fifty = count_words(clean_below_fifty, percentile)
+    if os.path.exists(file_path):
+        #print('File exists!')
+        #Open the file to start processing data
+        with open(input_file, 'r') as f:
+            data = json.load(f)
+            f.close()
 
-# Pring what was found, even if there were no legitimate counts
-if bool(top_above_fortynine) == True:
-    print("The words with the highest count in the ABOVE FORTY-NINE " +
-          "percentile are: ", top_above_fortynine)
-    print(" ")
-else:
-    print("All The words with the highest count in the ABOVE FORTY-NINE " +
-          "percentile were in the exclusions list. All other values appear " +
-          "exactly once.  There is nothing to return.")
-    print(" ")
+        new_data = data['new_data']
 
-if bool(top_below_fifty) == True:
-    print("The words with the highest count in the BELOW FIFTY percentile " +
-          "are: ", top_below_fifty)
-    print(" ")
-else:
-    print("All The words with the highest count in the BELOW FIFTY " +
-          "percentile were in the exclusions list. All other values appear " +
-          "exactly once.  There is nothing to return.")
-    print(" ")
+        for i in new_data:
+            # If the values has already been processed once, up the count by 1
+            if i["percent_correct"] > 0.499:
+                above_fortynine.append(i["text"])
+            elif i["percent_correct"] < 0.500:
+                below_fifty.append(i["text"])
+            #print(above_fortynine)
+            #print(below_fifty)
+            # Clean-up data of undesired characters
+            clean_above_fortynine = get_clean_data(above_fortynine)
+            clean_below_fifty = get_clean_data(below_fifty)
 
+            # Get all words with top-two counts
+            # Pass in "percentile" just for clarity not needed for logic execution
+            percentile = "ABOVE FORTY-NINE-NINE-NINE" #remove in final version
+            top_above_fortynine = count_words(clean_above_fortynine, percentile)
+            # Pass in "percentile" just for clarity not needed for logic execution
+            percentile = "BELOW FIFTY" #remove in final version
+            top_below_fifty = count_words(clean_below_fifty, percentile)
+
+            # Pring what was found, even if there were no legitimate counts
+            if bool(top_above_fortynine) == True:
+                print("The words with the highest count in the ABOVE FORTY-NINE " +
+                      "percentile are: ", top_above_fortynine)
+                print(" ")
+            else:
+                print("All The words with the highest count in the ABOVE FORTY-NINE " +
+                      "percentile were in the exclusions list. All other values appear " +
+                      "exactly once.  There is nothing to return.")
+                print(" ")
+
+            if bool(top_below_fifty) == True:
+                print("The words with the highest count in the BELOW FIFTY percentile " +
+                      "are: ", top_below_fifty)
+                print(" ")
+            else:
+                print("All The words with the highest count in the BELOW FIFTY " +
+                      "percentile were in the exclusions list. All other values appear " +
+                      "exactly once.  There is nothing to return.")
+                print(" ")
+
+'''
+o = command line option
+a = argument passed from the command line option
+Usage:
+    python stats.py -i [input-file-name].json -o [output-file-name].csv
+TO DO: Exception Handling for args is incomplete
+       Re-write to that is properly handles when one, both,
+       or all args are missing
+'''
+def main():
+    #input_file=''
+    #output_file=''
+
+    #try:
+    #     myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
+    #except getopt.GetoptError as e:
+    #    print(str(e))
+    #    print("Usage: %s -i input -o output" % sys.argv[0])
+    #    sys.exit(2)
+
+    #for o, a in myopts:
+    #    if o == '-i':
+    #        input_file=a
+    #    elif o == '-o':
+    #        output_file=a
+    # Uncomment to see value of args passed at the command line
+    # print ("Input file : %s and output file: %s" % (input_file, output_file) )
+
+    #get_new_data(input_file, output_file)
+    get_new_data("questions.json")
+
+if __name__ == '__main__':
+    main()
