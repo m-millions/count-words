@@ -9,10 +9,10 @@ new_data = [
     {"text": "Which statement BEST supports the president's goal for the \
       minimum wage?",
      "percent_correct": 0.6551724137931034},
-    {"text": "YUP",
-     "percent_correct": 0.5689655172413793},
-    {"text": "What can we conclude Obama hoped to gain by inviting Gabby \
-      Giffords to his State of the Union address?",
+    {"text": "YUP-YUP--YUP YUP-YUP--YUP YUP-YUP--YUP",
+     "percent_correct": 0.3889655172413793},
+    {"text": "What can we conclude the president hoped to gain by inviting  \
+      the people that he did to the State of the Union address?",
      "percent_correct": 0.6551724137931034},
     {"text": "Read this sentence from the passage.    <blockquote>\"Every \
       dollar \
@@ -22,7 +22,7 @@ new_data = [
       reducing violent crime.\"</blockquote>                                   \
       What can we conclude is the BEST reason the president makes this claim? ",
      "percent_correct": 0.5862068965517241},
-    {"text": "Which of the following claims made by President Obama in his \
+    {"text": "Which of the following claims made by the president in his \
       speech BEST supports the argument that raising the minimum wage will \
       benefit businesses and boost the economy?",
      "percent_correct": 0.41379310344827586},
@@ -30,12 +30,12 @@ new_data = [
      "percent_correct": 0.8135593220338984},
     {"text": "MAYBE",
      "percent_correct": 0.8220338983050848},
-    {"text": "What can we infer is the BEST reason why American companies are \
-      choosing to have their products made overseas rather than in the \
-      United States?",
+    {"text": "What can we infer is the BEST reason why companies are \
+      choosing to have their products made overseas rather than            \
+      at home?",
      "percent_correct": 0.6779661016949152},
-    {"text": "How will bringing companies back to the United States \
-      restore the middle class?",
+    {"text": "How will bringing companies back home  \
+      restore the economy?",
      "percent_correct": 0.6016949152542372},
     {"text": "Which of the following BEST describes why raising the \
       minimum wage may harm small businesses?",
