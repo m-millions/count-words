@@ -82,18 +82,18 @@ def get_clean_data(r):
 
 def get_new_data(input_file, output_file):
     '''
-    '''
-    # TODO: (1) Add fuction description
-    #       (2) Write exceptions/errors/processing-messages to a log file(s)
-    above_fortynine = []
-    below_fifty = []
-    file_path = './' + input_file
     #above_fortynine - holds a dict of the top-two repeated words in this
     #                  precentile and the total number of occurances - returns
     #                  empty if no significant repetitions were found
     #below_fifty     - holds a dict of the top-two repeated words in this
     #                  precentile and the total number of occurances - returns
     #                  empty if no significant repetitions were found
+    '''
+    # TODO: (1) Update description
+    #       (2) Write exceptions/errors/processing-messages to a log file(s)
+    above_fortynine = []
+    below_fifty = []
+    file_path = './' + input_file
     final_word_count = {"above_fortynine":'',
                         "below_fifty":''}
     top_above_fortynine = {}
