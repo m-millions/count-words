@@ -11,7 +11,8 @@ import sys
 
 '''
 SAMPLE DATA-SET:
-new_data = [
+{"new_data" =
+[
     {"text": "YUP-YUP--YUP YUP-YUP--YUP YUP-YUP--YUP",
      "percent_correct": 0.3889655172413793},
     {"text": "What can we conclude the • president hoped to gain by inviting   \
@@ -21,7 +22,7 @@ new_data = [
       we invest in high-quality early education can save more than             \
       seven dollars later on –                                                 \
       boosting graduation rates, reducing stuff,                               \
-      reducing even more stuff that needs to be reduced.\"</blockquote>                                   \
+      reducing even more stuff that needs to be reduced.\"</blockquote>        \
       What can we conclude is the BEST reason the; president makes this claim?",
      "percent_correct": 0.5862068965517241},
     {"text": "Which of the following claims made by the president in his       \
@@ -31,6 +32,7 @@ new_data = [
     {"text": "In the section \"What's the Fuss?\" What is GOING on here?",
      "percent_correct": 0.8135593220338984}
 ]
+}
 '''
 #TO DO: Import data from a file containing a JSON object
 #def count_words(words, percentile): #set-up for final version
@@ -232,7 +234,7 @@ def main():
     #    elif o == '-o':
     #        output_file=a
     # Uncomment to see value of args passed at the command line
-    # print ("Input file : %s and output file: %s" % (input_file, output_file) )
+    # print ("Input file : %s and output file: %s" % (input_file, output_file))
 
     #get_new_data(input_file, output_file)
     get_new_data("questions.json")
