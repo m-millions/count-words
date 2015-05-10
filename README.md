@@ -33,17 +33,48 @@ SAMPLE IN-PUT:
 STANDARD PROCESSING:
 
     These are the raw values passed in, after a clean-up:
-    ['which statement best supports the presidents goal for    eating ice cream in the winter', 'yupyupyup yupyupyup yupyupyup', 'what can we conclude the  president hoped to gain by inviting   the people that he did to the state of the union address', 'read this sentence from the passage  every dollar we invest in highquality early education can save more than             seven dollars later on                                                  boosting graduation rates reducing stuff                               reducing even more stuff that needs to be reduced                                   what can we conclude is the best reason the president makes this claim', 'in the section whats the fuss what is going on here', 'maybe', 'what can we infer is the best reason why companies are           choosing to have their products made overseas rather than                at home', 'how will bringing companies back home restore the economy', 'which of the following best describes why raising the ceiling on the new house is a good thing']
+    ['which statement best supports the presidents goal for    eating ice cream
+    in the winter', 'yupyupyup yupyupyup yupyupyup', 'what can we conclude the
+    president hoped to gain by inviting   the people that he did to the state of
+     the union address', 'read this sentence from the passage  every dollar we
+     invest in highquality early education can save more than             seven
+     dollars later on                                                  boosting
+     graduation rates reducing stuff                               reducing even
+      more stuff that needs to be reduced                                   what
+       can we conclude is the best reason the president makes this claim', 'in
+       the section whats the fuss what is going on here', 'maybe', 'what can we
+       infer is the best reason why companies are           choosing to have
+       their products made overseas rather than                at home', 'how
+       will bringing companies back home restore the economy', 'which of the
+       following best describes why raising the ceiling on the new house is a
+       good thing']
 
 ...
 
     These are the same values with associated counts per word:
-    {'restore': 1, 'sentence': 1, 'dollar': 1, 'passage': 1, 'to': 4, 'going': 1, 'highquality': 1, 'save': 1, 'good': 1, 'read': 1, 'early': 1, 'every': 1, 'bringing': 1, 'inviting': 1, 'did': 1, 'companies': 2, 'stuff': 2, 'reduced': 1, 'the': 16, 'people': 1, 'house': 1, 'back': 1, 'are': 1, 'choosing': 1, 'home': 2, 'best': 4, 'even': 1, 'what': 4, 'for': 1, 'section': 1, 'ice': 1, 'state': 1, 'new': 1, 'supports': 1, 'be': 1, 'we': 4, 'eating': 1, 'here': 1, 'reason': 2, 'boosting': 1, 'by': 1, 'on': 3, 'of': 2, 'dollars': 1, 'graduation': 1, 'thing': 1, 'products': 1, 'makes': 1, 'whats': 1, 'conclude': 2, 'presidents': 1, 'address': 1, 'reducing': 2, 'from': 1, 'union': 1, 'their': 1, 'describes': 1, 'rates': 1, 'statement': 1, 'more': 2, 'ceiling': 1, 'that': 2, 'hoped': 1, 'gain': 1, 'than': 2, 'raising': 1, 'he': 1, 'made': 1, 'this': 2, 'will': 1, 'yupyupyup': 3, 'can': 4, 'invest': 1, 'following': 1, 'claim': 1, 'seven': 1, 'is': 4, 'at': 1, 'have': 1, 'in': 3, 'education': 1, 'cream': 1, 'needs': 1, 'winter': 1, 'rather': 1, 'how': 1, 'which': 2, 'infer': 1, 'economy': 1, 'fuss': 1, 'president': 2, 'why': 2, 'goal': 1, 'a': 1, 'maybe': 1, 'later': 1, 'overseas': 1}
+    {'restore': 1, 'sentence': 1, 'dollar': 1, 'passage': 1, 'to': 4,
+     'going': 1, 'highquality': 1, 'save': 1, 'good': 1, 'read': 1, 'early': 1,
+     'every': 1, 'bringing': 1, 'inviting': 1, 'did': 1, 'companies': 2,
+     'stuff': 2, 'reduced': 1, 'the': 16, 'people': 1, 'house': 1, 'back': 1,
+     'are': 1, 'choosing': 1, 'home': 2, 'best': 4, 'even': 1, 'what': 4,
+     'for': 1, 'section': 1, 'ice': 1, 'state': 1, 'new': 1, 'supports': 1,
+     'be': 1, 'we': 4, 'eating': 1, 'here': 1, 'reason': 2, 'boosting': 1,
+     'by': 1, 'on': 3, 'of': 2, 'dollars': 1, 'graduation': 1, 'thing': 1,
+     'products': 1, 'makes': 1, 'whats': 1, 'conclude': 2, 'presidents': 1,
+     'address': 1, 'reducing': 2, 'from': 1, 'union': 1, 'their': 1,
+     'describes': 1, 'rates': 1, 'statement': 1, 'more': 2, 'ceiling': 1,
+     'that': 2, 'hoped': 1, 'gain': 1, 'than': 2, 'raising': 1, 'he': 1,
+     'made': 1, 'this': 2, 'will': 1, 'yupyupyup': 3, 'can': 4, 'invest': 1,
+     'following': 1, 'claim': 1, 'seven': 1, 'is': 4, 'at': 1, 'have': 1,
+     'in': 3, 'education': 1, 'cream': 1, 'needs': 1, 'winter': 1, 'rather': 1,
+     'how': 1, 'which': 2, 'infer': 1, 'economy': 1, 'fuss': 1, 'president': 2,
+     'why': 2, 'goal': 1, 'a': 1, 'maybe': 1, 'later': 1, 'overseas': 1}
 
 ...
 
     In the percentile:  ABOVE FORTY-NINE-NINE-NINE
-    These are the words, not found in the exclusions list, which have the highest top-two counts:  {'can': 4, 'best': 4}
+    These are the words, not found in the exclusions list, which have the
+    highest top-two counts:  {'can': 4, 'best': 4}
 
 AND
 
