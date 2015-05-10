@@ -135,10 +135,12 @@ def get_new_data(input_file):
             clean_above_fortynine = get_clean_data(above_fortynine)
             clean_below_fifty = get_clean_data(below_fifty)
             # Get all words with top-two counts
-            # Pass in "percentile" just for clarity not needed for logic execution
+            # Pass in "percentile" just for clarity not needed for logic
+            # execution - remove in final version of code
             percentile = "ABOVE FORTY-NINE-NINE-NINE" #remove in final version
             top_above_fortynine = count_words(clean_above_fortynine, percentile)
-            # Pass in "percentile" just for clarity not needed for logic execution
+            # Pass in "percentile" just for clarity not needed for logic
+            # execution - remove in final version of code
             percentile = "BELOW FIFTY" #remove in final version
             top_below_fifty = count_words(clean_below_fifty, percentile)
             # Print what was found, even if there were no legitimate counts
