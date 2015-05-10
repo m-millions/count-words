@@ -72,6 +72,8 @@ def count_words(words, percentile):
     print(clean_words_count) # delete at will
     print(" ")
     top_count = get_max_count(clean_words_count, percentile)
+    #if top_count
+       #no_repeats.append()
     return top_count
 
 def get_clean_data(r):
@@ -94,8 +96,7 @@ def get_clean_data(r):
         clean_r.append(i.lower())
     return clean_r
 
-#def get_new_data(input_file, output_file):
-def get_new_data(input_file):
+def get_new_data(input_file, output_file):
      # TO DO: (1) Add description here ...
      #        (2) Write exceptions/errors/processing-messages to a log file(s)
      #        (3) Write final results to a JSON object (dict)
@@ -104,7 +105,7 @@ def get_new_data(input_file):
     above_fortynine = []
     below_fifty = []
     file_path = './' + input_file
-    #"none_repeatable" - holds every question number were no significant
+    #"no_repeatable_value" - holds every question number were no significant
     #                    repeatabe words were found
     #"above_fortynine" - holds a dict of the top-two repeated words in this
     #                    precentile and the total number of occurances - returns
@@ -112,8 +113,7 @@ def get_new_data(input_file):
     #"below_fifty"     - holds a dict of the top-two repeated words in this
     #                    precentile and the total number of occurances - returns
     #                    empty if no significant repetitions were found
-    final_word_count = {"none_repeatable":'',
-                        "above_fortynine":'',
+    final_word_count = {"above_fortynine":'',
                         "below_fifty":''}
     top_above_fortynine = {}
     top_below_fifty = {}
@@ -130,43 +130,47 @@ def get_new_data(input_file):
                 above_fortynine.append(question["text"])
             elif question["percent_correct"] < 0.500:
                 below_fifty.append(question["text"])
-            #print(above_fortynine)
-            #print(below_fifty)
-            # Clean-up data of undesired characters
-            clean_above_fortynine = get_clean_data(above_fortynine)
-            clean_below_fifty = get_clean_data(below_fifty)
-            # Get all words with top-two counts
-            # Pass in "percentile" just for clarity not needed for logic
-            # execution - remove in final version of code
-            percentile = "ABOVE FORTY-NINE-NINE-NINE" #remove in final version
-            top_above_fortynine = count_words(clean_above_fortynine, percentile)
-            # Pass in "percentile" just for clarity not needed for logic
-            # execution - remove in final version of code
-            percentile = "BELOW FIFTY" #remove in final version
-            top_below_fifty = count_words(clean_below_fifty, percentile)
-            # Print what was found, even if there were no legitimate counts
-            if bool(top_above_fortynine) == True:
-                final_word_count['above_fortynine'] = top_above_fortynine
-                print("The words with the highest count in the ABOVE FORTY-NINE " +
-                      "percentile are: ", top_above_fortynine)
-                print(" ")
-            else:
-                print("All The words with the highest count in the ABOVE FORTY-NINE " +
-                      "percentile were in the exclusions list. All other values appear " +
-                      "exactly once.  There is nothing to return.")
-                print(" ")
-            if bool(top_below_fifty) == True:
-                final_word_count['below_fifty'] = top_below_fifty
-                print("The words with the highest count in the BELOW FIFTY percentile " +
-                      "are: ", top_below_fifty)
-                print(" ")
-            else:
-                print("All The words with the highest count in the BELOW FIFTY " +
-                      "percentile were in the exclusions list. All other values appear " +
-                      "exactly once.  There is nothing to return.")
-                print(" ")
+        # Clean-up data of undesired characters
+        clean_above_fortynine = get_clean_data(above_fortynine)
+        clean_below_fifty = get_clean_data(below_fifty)
+        # Get all words with top-two counts
+        # Pass in "percentile" just for clarity not needed for logic
+        # execution - remove in final version of code
+        percentile = "ABOVE FORTY-NINE-NINE-NINE" #remove in final version
+        top_above_fortynine = count_words(clean_above_fortynine, percentile)
+        # Pass in "percentile" just for clarity not needed for logic
+        # execution - remove in final version of code
+        percentile = "BELOW FIFTY" #remove in final version
+        top_below_fifty = count_words(clean_below_fifty, percentile)
+        # Print what was found, even if there were no legitimate counts
+        if bool(top_above_fortynine) == True:
+            final_word_count['above_fortynine'] = top_above_fortynine
+            print("The words with the highest count in the ABOVE FORTY-NINE " +
+                  "percentile are: ", top_above_fortynine)
+            print(" ")
+        else:
+            print("All The words with the highest count in the ABOVE FORTY-NINE " +
+                  "percentile were in the exclusions list. All other values appear " +
+                  "exactly once.  There is nothing to return.")
+            print(" ")
+        if bool(top_below_fifty) == True:
+            final_word_count['below_fifty'] = top_below_fifty
+            print("The words with the highest count in the BELOW FIFTY percentile " +
+                  "are: ", top_below_fifty)
+            print(" ")
+        else:
+            print("All The words with the highest count in the BELOW FIFTY " +
+                  "percentile were in the exclusions list. All other values appear " +
+                  "exactly once.  There is nothing to return.")
+            print(" ")
         print(final_word_count)
         print("888******************* THE END IS HERE *******************888")
+    else:
+        print('The file you want to process is missing! Please try again.')
+        exit()
+    #Dump list of dictionaries as a JSON object to a file
+    with io.open(output_file, 'w', encoding='utf-8') as of:
+        of.write(unicode(json.dumps(final_word_count, ensure_ascii=False)))
 
 #def get_max_count(clean_words_count): #set-up for final version
 def get_max_count(clean_words_count, percentile):
@@ -216,17 +220,19 @@ def get_max_count(clean_words_count, percentile):
                     #print(ii_count)
                 else:
                     del clean_words_count_copy[ii]
-            else:
-                #TO DO: Populate "none_repeatable" with "question_num" value
-                #       for items where no significant repeatable values were
-                #       found
-                print("Value found was NOT GREATER THAN 1!")
-    print(" ")
-    print("In the percentile: ", percentile)
-    print("These are the words, not found in the exclusions list, which have " +
-          "the highest top-two counts:")
-    print(top_count)
-    print(" ")
+    if bool(top_count) is False:
+        print(" ")
+        print("In the percentile: ", percentile)
+        print("No SIGNIFICANT repeatable words were found:")
+        print(top_count)
+        print(" ")
+    else:
+        print(" ")
+        print("In the percentile: ", percentile)
+        print("These are the words, not found in the exclusions list, which have " +
+              "the highest top-two counts:")
+        print(top_count)
+        print(" ")
     return top_count
 
 '''
@@ -240,7 +246,7 @@ TO DO: Exception Handling for args is incomplete
 '''
 def main():
     input_file='questions.json'
-    #output_file='top-two-counts-per-precentile.json"'
+    output_file='top-two-counts-per-precentile.json'
 
     #try:
         #myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
@@ -260,8 +266,7 @@ def main():
     #print ("Input file : %s and output file: %s" % (input_file, output_file))
     #print ("Input file : %s" % (input_file))
 
-    #get_new_data(input_file, output_file)
-    get_new_data(input_file)
+    get_new_data(input_file, output_file)
 
 if __name__ == '__main__':
     main()
