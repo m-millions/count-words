@@ -1,4 +1,4 @@
- # coding: utf-8
+# coding: utf-8
 from __future__ import print_function
 
 import re
@@ -6,39 +6,37 @@ import re
 
 #TO DO: Import data from a file containing a JSON object
 new_data = [
-    {"text": "Which statement BEST supports the president's goal for the \
-      minimum wage?",
+    {"text": "Which statement BEST supports the president's goal for    eating \
+      ice cream in the winter?",
      "percent_correct": 0.6551724137931034},
     {"text": "YUP-YUP--YUP YUP-YUP--YUP YUP-YUP--YUP",
      "percent_correct": 0.3889655172413793},
-    {"text": "What can we conclude the president hoped to gain by inviting  \
+    {"text": "What can we conclude the • president hoped to gain by inviting   \
       the people that he did to the State of the Union address?",
      "percent_correct": 0.6551724137931034},
-    {"text": "Read this sentence from the passage.    <blockquote>\"Every \
-      dollar \
+    {"text": "Read this sentence from the passage.  <blockquote>\"Every dollar \
       we invest in high-quality early education can save more than             \
       seven dollars later on –                                                 \
-      boosting graduation rates, reducing teen pregnancy,                      \
-      reducing violent crime.\"</blockquote>                                   \
-      What can we conclude is the BEST reason the president makes this claim? ",
+      boosting graduation rates, reducing stuff,                               \
+      reducing even more stuff that needs to be reduced.\"</blockquote>                                   \
+      What can we conclude is the BEST reason the; president makes this claim?",
      "percent_correct": 0.5862068965517241},
-    {"text": "Which of the following claims made by the president in his \
-      speech BEST supports the argument that raising the minimum wage will \
+    {"text": "Which of the following claims made by the president in his       \
+      speech BEST supports the argument that this change                  will \
       benefit businesses and boost the economy?",
      "percent_correct": 0.41379310344827586},
-    {"text": "OK",
+    {"text": "In the section \"What's the Fuss?\" What is going on here?",
      "percent_correct": 0.8135593220338984},
     {"text": "MAYBE",
      "percent_correct": 0.8220338983050848},
-    {"text": "What can we infer is the BEST reason why companies are \
-      choosing to have their products made overseas rather than            \
+    {"text": "What can we infer is the BEST reason why companies are           \
+      choosing to have their products made overseas rather than                \
       at home?",
      "percent_correct": 0.6779661016949152},
-    {"text": "How will bringing companies back home  \
-      restore the economy?",
+    {"text": "How will bringing companies back home restore the economy?",
      "percent_correct": 0.6016949152542372},
-    {"text": "Which of the following BEST describes why raising the \
-      minimum wage may harm small businesses?",
+    {"text": "Which of the following BEST describes why raising the ceiling on \
+      the new house is a good thing?",
      "percent_correct": 0.5932203389830508}]
 
 #def count_words(words, percentile): #set-up for final version
@@ -89,7 +87,7 @@ def get_clean_data(r):
     # TO DO: Update function description
     clean_r = []
     for i in r:
-        i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?\<\>/.,\\n\\r\\t\\xe2\\x80\\x93]', \
+        i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?\<\>/.,;\\n\\r\\t\\xe2\\x80\\x93]', \
                      '', i)
         i = i.strip()
         clean_r.append(i.lower())
