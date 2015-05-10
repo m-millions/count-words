@@ -38,32 +38,25 @@ def count_words(words, percentile):
     '''
     Counts how many times a value is being passed from a list object
     '''
-    # TO DO: (1) Update description
+    # TODO: (1) Update description
     #        (2) Write exceptions/errors/processing-messages to a log file(s)
     # Used to keep a unique list of all the values passed via questions
     clean_words = []
-    # keeps a dict of all the values passed via questions and the
+    # Keeps a dict of all the values passed via questions and the
     # number of times each value has been seen throughout the iterations
     clean_words_count = {}
     for i in words:
-        #print(i) # delete at will
         i = i.split()
-        #print(i)
         # If the values has already been processed once, up the count by 1
         for s in i:
-            #print(s)
+            # Up the count if word is repeating
             if s in clean_words:
                 clean_words_count[s] = clean_words_count[s] + 1
-                # delete at will
-                #print(s + " is already in here; up-ing the count!")
             else:
                 # If this is the first time seeing the value, add it to the
                 # dict, and initate its count to 1
                 clean_words.append(s)
                 clean_words_count[s] = 1
-    #print("These are the same values with associated counts per word:")
-    #print(clean_words_count) # delete at will
-    #print(" ")
     top_count = get_max_count(clean_words_count, percentile)
     return top_count
 
@@ -73,8 +66,8 @@ def get_clean_data(r):
     to eliminate unwanted characters in this case ( ) { } - < > and empty spaces
     in-between words.  More characters can be added as needed.
     '''
-    # TO DO: (1) Update function description
-    #        (2) Optimize this function - where possible
+    # TODO: (1) Update function description
+    #       (2) Optimize this function - where possible
     clean_r = []
     for i in r:
         i = re.sub('[\"\"\'\'\(\)\{\}<>\-\?/.,;\\n\\r\\t\\xe2\\x80\\x93]', \
@@ -90,8 +83,8 @@ def get_clean_data(r):
 def get_new_data(input_file, output_file):
     '''
     '''
-    # TO DO: (1) Add fuction description
-    #        (2) Write exceptions/errors/processing-messages to a log file(s)
+    # TODO: (1) Add fuction description
+    #       (2) Write exceptions/errors/processing-messages to a log file(s)
     above_fortynine = []
     below_fifty = []
     file_path = './' + input_file
@@ -106,12 +99,12 @@ def get_new_data(input_file, output_file):
     top_above_fortynine = {}
     top_below_fifty = {}
     if os.path.exists(file_path):
-        #Open the file and load to memory
+        # Open the file and load to memory
         with open(input_file, 'r') as f:
             data = json.load(f)
             f.close()
         questions = data['questions']
-        #start processing data in memory stack
+        # Start processing data from memory stack
         for question in questions:
             if question["percent_correct"] > 0.499:
                 above_fortynine.append(question["text"])
@@ -156,7 +149,7 @@ def get_new_data(input_file, output_file):
     else:
         print('The file you want to process is missing! Please try again.')
         exit()
-    #Dump list of dictionaries as a JSON object to a file
+    # Dump list of dictionaries as a JSON object to a file
     with io.open(output_file, 'w', encoding='utf-8') as of:
         of.write(unicode(json.dumps(final_word_count, ensure_ascii=False)))
 
@@ -171,17 +164,17 @@ def get_max_count(clean_words_count, percentile):
     Will igonore any values which are matched successfully against the values in
     the 'exclusions' list.
     '''
-    # TO DO: (1) Write exceptions/errors/processing-messages to a log file(s)
+    # TODO: (1) Write exceptions/errors/processing-messages to a log file(s)
     exclusions = ["a", "an", "the", "and", "but", "or", "for", \
                   "nor", "etc", "on", "at", "to", "from", "by", \
                   "is", "what", "of"]
     top_count = {}
-    # used to mutate dict outside of the iteration
+    # Used to mutate dict outside of the iteration
     clean_words_count_copy = {}
     clean_words_count_copy = dict.copy(clean_words_count)
     ii_count = 0
-    # capture max values and shorten dict in processing to always access
-    # max value
+    # Capture max values and shorten dict in processing to always access max
+    # value
     for x in clean_words_count:
         if ii_count < 2:
            # print(ii_count)
@@ -189,19 +182,15 @@ def get_max_count(clean_words_count, percentile):
                       key=(lambda key: clean_words_count_copy[key])))
             # Pull MAX but make sure it is greater than 1
             if clean_words_count_copy[ii] > 1:
-                #print(ii, clean_words_count_copy[ii])
                 # Make sure the repeated word is not in the exclusions list
                 if ii not in exclusions:
                     top_count[ii] = clean_words_count_copy[ii]
-                    #print(top_count)
                     del clean_words_count_copy[ii]
-                    #print(clean_words_count)
                     # If the value has already been processed once, up count + 1
                     ii_count = ii_count + 1
-                    #print(ii_count)
                 else:
                     del clean_words_count_copy[ii]
-    #TO DO: Write to log
+    # TODO: Write to log
     if bool(top_count) is False:
         print(" ")
         print("In the percentile: ", percentile, "No SIGNIFICANT repeatable \
@@ -213,7 +202,7 @@ o = command line option
 a = argument passed from the command line option
 Usage:
     python stats.py -i [input-file-name].json -o [output-file-name].csv
-TO DO: Exception Handling for args is incomplete
+TODO: Exception Handling for args is incomplete
        Re-write to that is properly handles when one, both,
        or all args are missing
 '''
