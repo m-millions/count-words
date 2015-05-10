@@ -84,18 +84,18 @@ SAMPLE OUT-PUT:
     {'anthem': 2, 'york': 3}
 
 
-CONFIGURATION INSTRUCTIONS
---------------------------
+CONFIGURE
+---------
 
 
-INSTALLATION INSTRUCTIONS
--------------------------
+INSTALL
+-------
 Clone or dowload the project to your environment and install all project
 dependencies, as detailed above.
 
 
-OPERATING INSTRUCTIONS
-----------------------
+RUN
+---
 
 
 KNOWN BUGS
