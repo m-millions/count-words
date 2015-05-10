@@ -34,19 +34,12 @@ SAMPLE DATA-SET:
 ]
 }
 '''
-#def count_words(words, percentile): #set-up for final version
 def count_words(words, percentile):
     '''
-    Main Function: Counts how many times a value is being passed from a list
-    object
+    Counts how many times a value is being passed from a list object
     '''
     # TO DO: (1) Update description
     #        (2) Write exceptions/errors/processing-messages to a log file(s)
-    print("888*******************  NEW RUN STARTS HERE *******************888")
-    print(" ")
-    print("These are the raw values passed in, after a clean-up:")
-    print(words)
-    print(" ")
     # Used to keep a unique list of all the values passed via questions
     clean_words = []
     # keeps a dict of all the values passed via questions and the
@@ -68,12 +61,10 @@ def count_words(words, percentile):
                 # dict, and initate its count to 1
                 clean_words.append(s)
                 clean_words_count[s] = 1
-    print("These are the same values with associated counts per word:")
-    print(clean_words_count) # delete at will
-    print(" ")
+    #print("These are the same values with associated counts per word:")
+    #print(clean_words_count) # delete at will
+    #print(" ")
     top_count = get_max_count(clean_words_count, percentile)
-    #if top_count
-       #no_repeats.append()
     return top_count
 
 def get_clean_data(r):
@@ -97,28 +88,24 @@ def get_clean_data(r):
     return clean_r
 
 def get_new_data(input_file, output_file):
-     # TO DO: (1) Add description here ...
-     #        (2) Write exceptions/errors/processing-messages to a log file(s)
-     #        (3) Write final results to a JSON object (dict)
-     #        (4) Write final JSON object to file:
-     #            "top-two-counts-per-precentile.json"
+    '''
+    '''
+    # TO DO: (1) Add fuction description
+    #        (2) Write exceptions/errors/processing-messages to a log file(s)
     above_fortynine = []
     below_fifty = []
     file_path = './' + input_file
-    #"no_repeatable_value" - holds every question number were no significant
-    #                    repeatabe words were found
-    #"above_fortynine" - holds a dict of the top-two repeated words in this
-    #                    precentile and the total number of occurances - returns
-    #                    empty if no significant repetitions were found
-    #"below_fifty"     - holds a dict of the top-two repeated words in this
-    #                    precentile and the total number of occurances - returns
-    #                    empty if no significant repetitions were found
+    #above_fortynine - holds a dict of the top-two repeated words in this
+    #                  precentile and the total number of occurances - returns
+    #                  empty if no significant repetitions were found
+    #below_fifty     - holds a dict of the top-two repeated words in this
+    #                  precentile and the total number of occurances - returns
+    #                  empty if no significant repetitions were found
     final_word_count = {"above_fortynine":'',
                         "below_fifty":''}
     top_above_fortynine = {}
     top_below_fifty = {}
     if os.path.exists(file_path):
-        #print('File exists!')
         #Open the file and load to memory
         with open(input_file, 'r') as f:
             data = json.load(f)
@@ -145,26 +132,27 @@ def get_new_data(input_file, output_file):
         # Print what was found, even if there were no legitimate counts
         if bool(top_above_fortynine) == True:
             final_word_count['above_fortynine'] = top_above_fortynine
-            print("The words with the highest count in the ABOVE FORTY-NINE " +
-                  "percentile are: ", top_above_fortynine)
+            print("The words with the highest count in the ABOVE FORTY-NINE \
+                   percentile are: ", top_above_fortynine)
             print(" ")
         else:
-            print("All The words with the highest count in the ABOVE FORTY-NINE " +
-                  "percentile were in the exclusions list. All other values appear " +
-                  "exactly once.  There is nothing to return.")
+            print("All The words with the highest count in the ABOVE \
+                   FORTY-NINE percentile were in the exclusions list. All other\
+                   values appear exactly once.  Returning empty dict:", \
+                   top_above_fortynine)
             print(" ")
         if bool(top_below_fifty) == True:
             final_word_count['below_fifty'] = top_below_fifty
-            print("The words with the highest count in the BELOW FIFTY percentile " +
-                  "are: ", top_below_fifty)
+            print("The words with the highest count in the BELOW FIFTY \
+                   percentile are: ", top_below_fifty)
             print(" ")
         else:
-            print("All The words with the highest count in the BELOW FIFTY " +
-                  "percentile were in the exclusions list. All other values appear " +
-                  "exactly once.  There is nothing to return.")
+            print("All The words with the highest count in the BELOW FIFTY \
+                   percentile were in the exclusions list. All other values \
+                   appear exactly once.  Returning empty dict:", \
+                   top_below_fifty)
             print(" ")
         print(final_word_count)
-        print("888******************* THE END IS HERE *******************888")
     else:
         print('The file you want to process is missing! Please try again.')
         exit()
@@ -172,35 +160,28 @@ def get_new_data(input_file, output_file):
     with io.open(output_file, 'w', encoding='utf-8') as of:
         of.write(unicode(json.dumps(final_word_count, ensure_ascii=False)))
 
-#def get_max_count(clean_words_count): #set-up for final version
 def get_max_count(clean_words_count, percentile):
     '''
+    Called twice, once each: above_fortynine, below_fifty
     Get all words with top-two highest number of occurances, as long as
-    said words are not included in the 'exclusions' list
+    said words are not included in the 'exclusions' list.
+    Will pull MAX but make sure that max is greater than 1
+    and run x times as long as clean_words_count[ii] > 1 and two top values
+    have not been found yet.
+    Will igonore any values which are matched successfully against the values in
+    the 'exclusions' list.
     '''
-    # TO DO: (1) Update description
-    #        (2) Write exceptions/errors/processing-messages to a log file(s)
-    # Add/Delete to/from exclusions list at will
+    # TO DO: (1) Write exceptions/errors/processing-messages to a log file(s)
     exclusions = ["a", "an", "the", "and", "but", "or", "for", \
                   "nor", "etc", "on", "at", "to", "from", "by", \
                   "is", "what", "of"]
     top_count = {}
-    # capture passed values and shorten
     # used to mutate dict outside of the iteration
     clean_words_count_copy = {}
     clean_words_count_copy = dict.copy(clean_words_count)
     ii_count = 0
-    # pull MAX but make sure that max is greater than 1
-    # and run x times as long as clean_words_count[ii] > 1 and two top values
-    # have not been found yet.
-    # Will iterate through every value in the collection and aler if the value
-    # associated with the key is not greater than 1 and will igonore any values
-    # which are matched successfully against the values in the 'exclusions' list
-    # TO DO: Modify the code so that it doesnt alert for every single value,
-    #       which is not greater than one, instead it should alert once and show
-    #       all values which were not in the 'exclusions' list but had a value
-    #       of only 1 <<< this may be over-kill for larger data sets, but cool
-    #       to show in this example
+    # capture max values and shorten dict in processing to always access
+    # max value
     for x in clean_words_count:
         if ii_count < 2:
            # print(ii_count)
@@ -220,19 +201,11 @@ def get_max_count(clean_words_count, percentile):
                     #print(ii_count)
                 else:
                     del clean_words_count_copy[ii]
+    #TO DO: Write to log
     if bool(top_count) is False:
         print(" ")
-        print("In the percentile: ", percentile)
-        print("No SIGNIFICANT repeatable words were found:")
-        print(top_count)
-        print(" ")
-    else:
-        print(" ")
-        print("In the percentile: ", percentile)
-        print("These are the words, not found in the exclusions list, which have " +
-              "the highest top-two counts:")
-        print(top_count)
-        print(" ")
+        print("In the percentile: ", percentile, "No SIGNIFICANT repeatable \
+               words were found.  Returning empty dict.", top_count)
     return top_count
 
 '''
