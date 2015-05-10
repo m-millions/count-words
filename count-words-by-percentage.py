@@ -11,7 +11,7 @@ import sys
 
 '''
 SAMPLE DATA-SET:
-{"new_data" =
+{"new_data":
 [
     {"text": "YUP-YUP--YUP YUP-YUP--YUP YUP-YUP--YUP",
      "percent_correct": 0.3889655172413793},
