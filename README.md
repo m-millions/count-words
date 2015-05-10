@@ -127,8 +127,8 @@ CREDITS and ACKNOWLEDGEMENTS
     incredible mentor on all things tech and I am forever grateful.
 
 
-CHANGE LOG
----------
+REVISIONS and CODE VERSIONING
+-----------------------------
 First major version:
 
     The last commit for the first major version of the script is associated with
