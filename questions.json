@@ -5,10 +5,10 @@
         "text": "Which statement BEST supports the president's goal for    eating ice cream in the winter?",
         "percent_correct": 0.6551724137931034
     },
-    {
+        {
         "question_num": 2,
         "text": "YUP-YUP--YUP YUP-YUP--YUP YUP-YUP--YUP",
-        "percent_correct": 0.3889655172413793
+        "percent_correct": 0.7889655172413793
     },
     {
         "question_num": 3,
@@ -16,37 +16,37 @@
         "percent_correct": 0.6551724137931034
     },
     {
-        "question_num": 3,
+        "question_num": 4,
         "text": "Read this sentence from the passage.  <blockquote>\"Every dollar we invest in high-quality early education can save more than             seven dollars later on –                                                 boosting graduation rates, reducing stuff,                               reducing even more stuff that needs to be reduced.\"</blockquote>                                   What can we conclude is the BEST reason the; president makes this claim?",
         "percent_correct": 0.5862068965517241
     },
     {
-        "question_num": 4,
+        "question_num": 5,
         "text": "Which of the following claims made by the president in his       speech BEST supports the argument that this change                  will benefit businesses and boost the economy?",
         "percent_correct": 0.41379310344827586
     },
     {
-        "question_num": 5,
+        "question_num": 6,
         "text": "In the section \"What's the Fuss?\" What is going on here?",
         "percent_correct": 0.8135593220338984
     },
     {
-        "question_num": 6,
+        "question_num": 7,
         "text": "MAYBE",
         "percent_correct": 0.8220338983050848
     },
     {
-        "question_num": 7,
+        "question_num": 8,
         "text": "What can we infer is the BEST reason why companies are           choosing to have their products made overseas rather than                at home?",
         "percent_correct": 0.6779661016949152
     },
     {
-        "question_num": 8,
+        "question_num": 9,
         "text": "How will bringing companies back home restore the economy?",
         "percent_correct": 0.6016949152542372
     },
     {
-        "question_num": 9,
+        "question_num": 10,
         "text": "Which of the following BEST describes why raising the ceiling on the new house is a good thing?",
         "percent_correct": 0.5932203389830508
     }
