@@ -1,13 +1,13 @@
 #coding: UTF-8
 from __future__ import print_function
 
-#import csv
 #import getopt
 #import io
 import json
 import os.path
 import re
 import sys
+
 
 '''
 SAMPLE DATA-SET:
@@ -34,7 +34,6 @@ SAMPLE DATA-SET:
 ]
 }
 '''
-#TO DO: Import data from a file containing a JSON object
 #def count_words(words, percentile): #set-up for final version
 def count_words(words, percentile):
     '''
@@ -117,30 +116,24 @@ def get_new_data(input_file):
                         "below_fifty":''}
     top_above_fortynine = {}
     top_below_fifty = {}
-
     if os.path.exists(file_path):
         #print('File exists!')
-        #Open the file to start processing data
+        #Open the file and load to memory
         with open(input_file, 'r') as f:
             data = json.load(f)
             f.close()
-
         questions = data['questions']
-
+        #start processing data in memory stack
         for question in questions:
-            # If the values has already been processed once, up the count by 1
             if question["percent_correct"] > 0.499:
                 above_fortynine.append(question["text"])
-                #above_fortynine.append(str(i["text"]))
             elif question["percent_correct"] < 0.500:
                 below_fifty.append(question["text"])
-                #below_fifty.append(str(i["text"]))
             #print(above_fortynine)
             #print(below_fifty)
             # Clean-up data of undesired characters
             clean_above_fortynine = get_clean_data(above_fortynine)
             clean_below_fifty = get_clean_data(below_fifty)
-
             # Get all words with top-two counts
             # Pass in "percentile" just for clarity not needed for logic execution
             percentile = "ABOVE FORTY-NINE-NINE-NINE" #remove in final version
@@ -148,8 +141,7 @@ def get_new_data(input_file):
             # Pass in "percentile" just for clarity not needed for logic execution
             percentile = "BELOW FIFTY" #remove in final version
             top_below_fifty = count_words(clean_below_fifty, percentile)
-
-            # Pring what was found, even if there were no legitimate counts
+            # Print what was found, even if there were no legitimate counts
             if bool(top_above_fortynine) == True:
                 print("The words with the highest count in the ABOVE FORTY-NINE " +
                       "percentile are: ", top_above_fortynine)
@@ -204,14 +196,16 @@ def get_max_count(clean_words_count, percentile):
            # print(ii_count)
             ii = (max(clean_words_count_copy.iterkeys(), \
                       key=(lambda key: clean_words_count_copy[key])))
+            # Pull MAX but make sure it is greater than 1
             if clean_words_count_copy[ii] > 1:
                 #print(ii, clean_words_count_copy[ii])
+                # Make sure the repeated word is not in the exclusions list
                 if ii not in exclusions:
                     top_count[ii] = clean_words_count_copy[ii]
                     #print(top_count)
                     del clean_words_count_copy[ii]
                     #print(clean_words_count)
-                    # pull MAX but make sure it is greater than 1
+                    # If the value has already been processed once, up count + 1
                     ii_count = ii_count + 1
                     #print(ii_count)
                 else:
@@ -229,7 +223,6 @@ def get_max_count(clean_words_count, percentile):
     print(" ")
     return top_count
 
-
 '''
 o = command line option
 a = argument passed from the command line option
@@ -240,8 +233,8 @@ TO DO: Exception Handling for args is incomplete
        or all args are missing
 '''
 def main():
-    #input_file=''
-    #output_file=''
+    input_file='questions.json'
+    #output_file='top-two-counts-per-precentile.json"'
 
     #try:
     #     myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
@@ -259,7 +252,7 @@ def main():
     # print ("Input file : %s and output file: %s" % (input_file, output_file))
 
     #get_new_data(input_file, output_file)
-    get_new_data("questions.json")
+    get_new_data(input_file)
 
 if __name__ == '__main__':
     main()
