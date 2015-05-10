@@ -4,6 +4,7 @@ from __future__ import print_function
 import getopt
 import io
 import json
+import logging
 import os.path
 import re
 import sys
@@ -34,12 +35,13 @@ SAMPLE DATA-SET:
 ]
 }
 '''
+logging.basicConfig(filename='count-words-by-percentage.log',level=logging.DEBUG)
+
 def count_words(words, percentile):
     '''
     Counts how many times a value is being passed from a list object
     '''
     # TODO: (1) Update description
-    #        (2) Write exceptions/errors/processing-messages to a log file(s)
     # Used to keep a unique list of all the values passed via questions
     clean_words = []
     # Keeps a dict of all the values passed via questions and the
@@ -90,7 +92,6 @@ def get_new_data(input_file, output_file):
     #                  empty if no significant repetitions were found
     '''
     # TODO: (1) Update description
-    #       (2) Write exceptions/errors/processing-messages to a log file(s)
     above_fortynine = []
     below_fifty = []
     file_path = './' + input_file
@@ -125,29 +126,18 @@ def get_new_data(input_file, output_file):
         # Print what was found, even if there were no legitimate counts
         if bool(top_above_fortynine) == True:
             final_word_count['above_fortynine'] = top_above_fortynine
-            print("The words with the highest count in the ABOVE FORTY-NINE \
-                   percentile are: ", top_above_fortynine)
-            print(" ")
+            logging.info('ABOVE FORTY-NINE top-two count: %s', top_above_fortynine)
         else:
-            print("All The words with the highest count in the ABOVE \
-                   FORTY-NINE percentile were in the exclusions list. All other\
-                   values appear exactly once.  Returning empty dict:", \
-                   top_above_fortynine)
-            print(" ")
+            logging.info("ABOVE FORTY-NINE: No SIGNIFICANT words repeat.")
+                   #top_above_fortynine)
         if bool(top_below_fifty) == True:
             final_word_count['below_fifty'] = top_below_fifty
-            print("The words with the highest count in the BELOW FIFTY \
-                   percentile are: ", top_below_fifty)
-            print(" ")
+            logging.info('BELOW FIFTY top-two count: %s', top_below_fifty)
         else:
-            print("All The words with the highest count in the BELOW FIFTY \
-                   percentile were in the exclusions list. All other values \
-                   appear exactly once.  Returning empty dict:", \
-                   top_below_fifty)
-            print(" ")
-        print(final_word_count)
+            logging.info("BELOW FIFTY: No SIGNIFICANT words repeat.")
+        logging.info('FINAL JSON written to file: %s', final_word_count)
     else:
-        print('The file you want to process is missing! Please try again.')
+        logging.info('The file is missing! Please try again.')
         exit()
     # Dump list of dictionaries as a JSON object to a file
     with io.open(output_file, 'w', encoding='utf-8') as of:
@@ -164,7 +154,6 @@ def get_max_count(clean_words_count, percentile):
     Will igonore any values which are matched successfully against the values in
     the 'exclusions' list.
     '''
-    # TODO: (1) Write exceptions/errors/processing-messages to a log file(s)
     exclusions = ["a", "an", "the", "and", "but", "or", "for", "nor", "etc", \
                   "on", "at", "to", "from", "by", "is", "what", "of"]
     top_count = {}
@@ -189,11 +178,6 @@ def get_max_count(clean_words_count, percentile):
                     ii_count = ii_count + 1
                 else:
                     del clean_words_count_copy[ii]
-    # TODO: Write to log
-    if bool(top_count) is False:
-        print(" ")
-        print("In the percentile: ", percentile, "No SIGNIFICANT repeatable \
-               words were found.  Returning empty dict.", top_count)
     return top_count
 
 '''
@@ -212,7 +196,6 @@ def main():
     #       (2) Activate code to allow parameters from the command line
     input_file='questions.json'
     output_file='top-two-counts-per-precentile.json'
-
     #try:
         #myopts, args = getopt.getopt(sys.argv[1:],"i:o:")
     #    myopts, args = getopt.getopt(sys.argv[0:],"i:")
