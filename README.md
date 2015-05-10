@@ -1,6 +1,6 @@
 
-WHAT the CODE DOES
-------------------
+WHAT the CODE DOES: CURRENT VERSION
+-----------------------------------
 SECOND MAJOR VERSION as of 05/10/2015
 
 
@@ -154,15 +154,15 @@ COPYRIGHT and LICENSING
 Use and extend at will - credit the author.
 
 
-CREDITS and ACKNOWLEDGEMENTS
-----------------------------
+ACKNOWLEDGEMENTS
+----------------
     www.google.com
     http://www.giantflyingsaucer.com/ - Chad Lung, who continues to be an
     incredible mentor on all things tech and I am forever grateful.
 
 
-REVISIONS and CODE VERSIONING
------------------------------
+PREVIOUS VERSIONS
+-----------------
 FIRST MAJOR VERSION as of 05/09/2015
 
     The last commit for the first major version of the script is associated with
