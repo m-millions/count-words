@@ -35,7 +35,8 @@ SAMPLE DATA-SET:
 ]
 }
 '''
-logging.basicConfig(filename='count-words-by-percentage.log',level=logging.DEBUG)
+logging.basicConfig(filename='count-words-by-percentage.log',\
+                    level=logging.DEBUG)
 
 def count_words(words, percentile):
     '''
@@ -126,10 +127,10 @@ def get_new_data(input_file, output_file):
         # Print what was found, even if there were no legitimate counts
         if bool(top_above_fortynine) == True:
             final_word_count['above_fortynine'] = top_above_fortynine
-            logging.info('ABOVE FORTY-NINE top-two count: %s', top_above_fortynine)
+            logging.info('ABOVE FORTY-NINE top-two count: %s', \
+                          top_above_fortynine)
         else:
             logging.info("ABOVE FORTY-NINE: No SIGNIFICANT words repeat.")
-                   #top_above_fortynine)
         if bool(top_below_fifty) == True:
             final_word_count['below_fifty'] = top_below_fifty
             logging.info('BELOW FIFTY top-two count: %s', top_below_fifty)
@@ -161,8 +162,7 @@ def get_max_count(clean_words_count, percentile):
     clean_words_count_copy = {}
     clean_words_count_copy = dict.copy(clean_words_count)
     ii_count = 0
-    # Capture max values and shorten dict in processing to always access max
-    # value
+    # Capture MAX value and shorten dict
     for x in clean_words_count:
         if ii_count < 2:
            # print(ii_count)
