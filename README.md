@@ -32,7 +32,17 @@ SAMPLE IN-PUT:
 
 STANDARD PROCESSING:
 
-    These are the raw values passed in, after a clean-up:
+...
+
+Words excluded from processing:
+
+    exclusions = ["a", "an", "the", "and", "but", "or", "for", "nor", "etc", \
+                  "on", "at", "to", "from", "by", "is", "what", "of"]
+
+...
+
+These are the raw values passed in, after a clean-up:
+
     ['which statement best supports the presidents goal for    eating ice cream
     in the winter', 'yupyupyup yupyupyup yupyupyup', 'what can we conclude the
     president hoped to gain by inviting   the people that he did to the state of
@@ -51,7 +61,8 @@ STANDARD PROCESSING:
 
 ...
 
-    These are the same values with associated counts per word:
+These are the same values with associated counts per word:
+
     {'restore': 1, 'sentence': 1, 'dollar': 1, 'passage': 1, 'to': 4,
      'going': 1, 'highquality': 1, 'save': 1, 'good': 1, 'read': 1, 'early': 1,
      'every': 1, 'bringing': 1, 'inviting': 1, 'did': 1, 'companies': 2,
